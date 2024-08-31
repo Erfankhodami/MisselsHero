@@ -7,7 +7,7 @@ public class PlayerControll : MonoBehaviour
 {
     private Rigidbody2D Rb;
     private Vector2 ForceDirV2;
-    //tst
+    
     [SerializeField] private float ForceMultiplerF;
     [SerializeField] private float RotationSpeedF;
     [SerializeField] private GameObject MissleG;
