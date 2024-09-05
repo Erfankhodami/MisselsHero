@@ -45,7 +45,7 @@ public class PlayerControll : MonoBehaviour
         //spawning the missle
         if (Input.GetKeyDown(KeyCode.Mouse1))
         {
-            Instantiate(MissleG, new Vector2(transform.position.x+1,transform.position.y), transform.rotation);
+            Instantiate(MissleG, transform.position, transform.rotation);
         }
     }
 

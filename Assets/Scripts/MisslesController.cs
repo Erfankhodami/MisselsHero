@@ -6,29 +6,30 @@ using UnityEngine;
 public class MisslesController : MonoBehaviour
 {
     private Rigidbody2D MissleRB;
-    [SerializeField] private ParticleSystem ParticleSystemP;
+    [SerializeField] private GameObject ParticlesG;
     [SerializeField] private GameObject MissleSpriteG;
+
     [SerializeField] private float SpeedF;
+
+    [SerializeField] private float ParticlesForceMultiplierF=100;
     // Start is called before the first frame update
     void Start()
     {
         MissleRB = GetComponent<Rigidbody2D>();
         //spawn the partcile system of missle flames
-        ParticleSystem particleSystemP;
         GameObject missleSpriteG;
-        particleSystemP=Instantiate(ParticleSystemP, transform.position, quaternion.Euler(transform.rotation.x+90,transform.rotation.y,transform.rotation.z));
-        missleSpriteG=Instantiate(MissleSpriteG, transform.position, transform.rotation);
-        particleSystemP.transform.parent = gameObject.transform;
+        missleSpriteG = Instantiate(MissleSpriteG, transform.position, transform.rotation);
         missleSpriteG.transform.parent = gameObject.transform;
-        
+
 
         StartCoroutine(DestroyMissle());
+        StartCoroutine(SpawnParticles());
     }
 
     // Update is called once per frame
     void Update()
     {
-        MissleRB.AddForce(transform.up*SpeedF*Time.deltaTime*10);
+        MissleRB.AddForce(transform.up * SpeedF * Time.deltaTime * 10);
     }
 
     IEnumerator DestroyMissle()
@@ -37,6 +38,21 @@ public class MisslesController : MonoBehaviour
         {
             yield return null;
         }
+
         Destroy(gameObject);
+    }
+
+    IEnumerator SpawnParticles()
+    {
+        for (int i = 0; i < 100; i++)
+        {
+            if (i % 5 == 0)
+            {
+                GameObject particlesG;
+                particlesG=Instantiate(ParticlesG, transform.position, transform.rotation);
+                particlesG.GetComponent<Rigidbody2D>().AddForce(-transform.up*ParticlesForceMultiplierF);
+            }
+            yield return null;
+        }
     }
 }

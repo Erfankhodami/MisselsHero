@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed3fc1d29ad51ef42a5dfb392aaf627e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ParticleSystemP: {fileID: 1619633533407040459, guid: 2a0452eab7ad6b7489f1e5dc46031d84, type: 3}
+  ParticlesG: {fileID: 6131811436283811191, guid: 2a0452eab7ad6b7489f1e5dc46031d84, type: 3}
   MissleSpriteG: {fileID: 6018038044940346996, guid: d64ddebce3894f64bae9e8c68262a3e0, type: 3}
   SpeedF: 100
 --- !u!50 &-5772727445441618893
